@@ -1,10 +1,12 @@
 import { useState } from "react";
+import useAppData from "../data/hook/useAppData";
 import Input from "../components/template/Input";
 import Layout from "../components/template/Layout";
 import useFinances from "../data/hook/useFinances";
 export default function CalculateInss() {
+  const { finProfile} = useAppData()
   const { calcularIr } = useFinances();
-  const [valorInput, setValorInput] = useState(null);
+  const [valorInput, setValorInput] = useState(finProfile?.salarioBruto > 0 ? finProfile?.salarioBruto : null);
   const [irpf, setIrpf] = useState(0);
 
   return (

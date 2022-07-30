@@ -28,10 +28,10 @@ export default function useFinances(){
         }
         return Number(valorInss.toFixed(2));
       }
-      function calcularIr(valor: number, callBack = calcularInss) {
+      function calcularIr(valor: number, dependentes = 0 ,callBack = calcularInss) {
         const valorInss = () => {
           let valorInss = callBack(valor) >= 604.44 ? 604.44 : callBack(valor);
-          return valor - valorInss;
+          return (valor - valorInss) - dependentes * (2275.08 / 12)
         };
         let valorIr = 0;
         if (valorInss() > 1903.98) {

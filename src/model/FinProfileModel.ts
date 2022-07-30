@@ -1,21 +1,28 @@
 import useFinances from "../data/hook/useFinances";
-
+import GastoItem from "./GastoItem";
+interface iptuProps{
+  imovel: number;
+  valorFinal: number;
+}
+interface ipvaProps{
+  carro: number;
+  valorFinal: number;
+}
 export default class FinProfileModel {
   #name: string;
-  #salrioBruto: number;
-  #salarioLiquido: number;
+  #salarioBruto: number;
   #dependentesNumero: number;
   #planoDeSaudeValor: number;
   #dependentesPlanoValor: number;
-  #iptu: number;
+  #iptu: iptuProps;
   #iptuParcelamento: number;
-  #ipva: number;
+  #ipva: ipvaProps;
   #ipvaParcelamento: number;
   #irpf: number;
   #inss: number;
   constructor(
     name:string,
-    salrioBruto:number,
+    salarioBruto:number,
     dependentesNumero:number,
     planoDeSaudeValor:number,
     dependentesPlanoValor: number,
@@ -24,19 +31,18 @@ export default class FinProfileModel {
     ipva:number,
     ipvaParcelamento:number,
   ) {
-    const {calcularInss, calcularIr} = useFinances()
+    const {calcularInss, calcularIr, calcularIptu, calcularIpva} = useFinances()
     this.#name = name;
-    this.#salrioBruto = salrioBruto;
-    this.#salarioLiquido = this.getSalarioLiquido()
+    this.#salarioBruto = salarioBruto;
     this.#dependentesNumero = dependentesNumero;
     this.#dependentesPlanoValor = dependentesPlanoValor;
-    this.#iptu = iptu;
-    this.#iptuParcelamento = iptuParcelamento;
-    this.#ipva = ipva;
-    this.#ipvaParcelamento = ipvaParcelamento;
+    this.#iptu = {imovel: iptu, valorFinal: Number(calcularIptu(iptu))};
+    this.#iptuParcelamento = iptuParcelamento > 0 ? iptuParcelamento : 1
+    this.#ipva = {carro: ipva, valorFinal: Number(calcularIpva(ipva))};
+    this.#ipvaParcelamento = ipvaParcelamento > 0 ? ipvaParcelamento : 1;
     this.#planoDeSaudeValor = planoDeSaudeValor;
-    this.#inss = calcularInss(this.#salrioBruto)
-    this.#irpf = calcularIr(this.#salrioBruto) 
+    this.#inss = calcularInss(this.#salarioBruto)
+    this.#irpf = calcularIr(this.#salarioBruto, this.#dependentesNumero) 
   }
   static getWhiteProfile(){
     return new FinProfileModel(
@@ -46,8 +52,8 @@ export default class FinProfileModel {
   get name() {
     return this.#name;
   }
-  get salrioBruto() {
-    return this.#salrioBruto;
+  get salarioBruto() {
+    return this.#salarioBruto;
   }
   get dependentesNumero() {
     return this.#dependentesNumero;
@@ -76,16 +82,31 @@ export default class FinProfileModel {
   get irpf(){
     return this.#irpf
   }
+  #dependenteDesconto(){
+    return (this.#dependentesNumero * 2275.08) / 12
+  }
   possuiDependentes() {
     return this.#dependentesNumero > 0 ? true : false;
   }
   getSalarioLiquido() {
     let gastos =
       this.dependentesPlanoValor * this.#dependentesNumero +
-      this.#iptu / this.#iptuParcelamento +
-      this.#ipva / this.#ipvaParcelamento +
+      this.#iptu.valorFinal / this.#iptuParcelamento +
+      this.#ipva.valorFinal / this.#ipvaParcelamento +
       this.#planoDeSaudeValor + this.#inss + this.#irpf
-    let valor = this.#salrioBruto - gastos
-    return valor
+    let valor = this.#salarioBruto - gastos
+    return Math.round(valor)
+  }
+  getArrayGastos(){
+    return [
+      {name: 'INSS', valor: this.#inss, parcelas: 1},
+      {name: 'IRPF', valor: this.#irpf, parcelas: 1},
+      {name: 'IPVA', valor: this.#ipva.valorFinal, parcelas: this.#ipvaParcelamento},
+      {name: 'IPTU', valor: this.#iptu.valorFinal, parcelas: this.#iptuParcelamento},
+      {name: 'Plano de saúde', valor: this.#planoDeSaudeValor, parcelas: 1},
+      {name: 'Plano dependentes', valor: this.#dependentesPlanoValor, parcelas: 1}
+    ].map((item, i)=>{
+      return new GastoItem(item.name, i, item.valor, item.parcelas, this.#salarioBruto)
+    }).filter(item => item.valor > 0)
   }
 }

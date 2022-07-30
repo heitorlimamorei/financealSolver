@@ -1,25 +1,26 @@
 import { useState } from "react";
-import useAppData from "../data/hook/useAppData";
 import Input from "../components/template/Input";
 import Layout from "../components/template/Layout";
 import useFinances from "../data/hook/useFinances";
+import useAppData from "../data/hook/useAppData";
+
 export default function CalculateInss() {
   const { finProfile} = useAppData()
+  const { calcularIpva } = useFinances();
+  const [valorInput, setValorInput] = useState(finProfile?.ipva.carro > 0 ? finProfile?.ipva.carro : null);
+  const [ipva, setIpva] = useState(0);
 
-  const [valorInput, setValorInput] = useState(finProfile?.salarioBruto > 0 ? finProfile?.salarioBruto : null);
-  const [inss, setInss] = useState(0);
-  const { calcularInss } = useFinances();
   return (
     <div>
-      <Layout titulo="Calcule o seu Inss" subtitulo="Simples e rápido">
+      <Layout titulo="Calcule o seu IPVA" subtitulo="Simples e rápido">
         <div className="flex flex-col justify-center items-center">
           <Input
-            valor={inss}
-            setValor={setInss}
+            metodo={calcularIpva}
             valorInput={valorInput}
-            text="Digite seu salário bruto"
             setValorInput={setValorInput}
-            metodo={calcularInss}
+            valor={ipva}
+            setValor={setIpva}
+            text="valor de seu carro"
           />
         </div>
       </Layout>

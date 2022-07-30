@@ -5,7 +5,7 @@ import useAuth from '../data/hook/useAuth'
 
 export default function Perfil() {
   const { usuario } = useAuth()
-  const { tema } = useAppData()
+  const { tema, finProfile } = useAppData()
   return (
     <div className={``}>
       <Layout titulo="Perfil de usuario" subtitulo="Gerencie suas informações aqui!">
