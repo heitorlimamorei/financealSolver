@@ -57,7 +57,7 @@ export default function useFinances(){
         } else {
           valorIr = 0;
         }
-        return valorIr.toFixed(2);
+        return Number(valorIr.toFixed(2));
       }
       
       const salarioLiquido = (calInss, calIr, valor:number) => {
