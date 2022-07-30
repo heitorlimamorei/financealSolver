@@ -1,7 +1,6 @@
 import { SunIcon, MoonIcon } from "../icons/Icones";
-type Tema = "dark" | " ";
 interface BotaTemaProps {
-  tema: Tema;
+  tema: string;
   alternarTema: () => void;
 }
 export default function BotaoTema(props: BotaTemaProps) {

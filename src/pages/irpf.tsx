@@ -3,20 +3,21 @@ import Input from "../components/template/Input";
 import Layout from "../components/template/Layout";
 import useFinances from "../data/hook/useFinances";
 export default function CalculateInss() {
+  const { calcularIr } = useFinances();
   const [valorInput, setValorInput] = useState(null);
-  const [inss, setInss] = useState(0);
-  const { calcularInss } = useFinances();
+  const [irpf, setIrpf] = useState(0);
+
   return (
     <div>
-      <Layout titulo="Calcule o seu Inss" subtitulo="Simples e rápido">
+      <Layout titulo="Calcule o seu IRPF" subtitulo="Simples e rápido">
         <div className="flex flex-col justify-center items-center">
           <Input
-            valor={inss}
-            setValor={setInss}
+            metodo={calcularIr}
             valorInput={valorInput}
-            text="Digite seu salário bruto"
             setValorInput={setValorInput}
-            metodo={calcularInss}
+            valor={irpf}
+            setValor={setIrpf}
+            text="Digite seu salário bruto"
           />
         </div>
       </Layout>

@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect} from "react";
-//type Tema = "dark" | ""
+
 interface AppContextProps {
     tema: string;
     alternarTema: () => void;
@@ -27,7 +27,7 @@ export function AppContextProvider(props:AppContextProvider){
     }, [])
     return (
         <AppContext.Provider value={{
-            tema:tema,
+            tema,
             alternarTema
         }}>
             {props.children}
