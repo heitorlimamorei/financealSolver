@@ -45,7 +45,7 @@ export default function CfProfile() {
         subtitulo="Aqui você vai responder um forms e criar seu perfil"
       >
         <div className={`flex flex-col w-full h-full`}>
-          <ProfileInput valor={name} setValor={setName} tipo="text"  className="w-full" />
+          <ProfileInput valor={name} setValor={setName} tipo="text"  className="w-full" placeholder="Seu nome"/>
           <ProfileInput
             valor={salarioBruto ?? ''}
             tipo="number"

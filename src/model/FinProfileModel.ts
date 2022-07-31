@@ -1,5 +1,7 @@
+import useAuth from "../data/hook/useAuth";
 import useFinances from "../data/hook/useFinances";
 import GastoItem from "./GastoItem";
+
 interface iptuProps{
   imovel: number;
   valorFinal: number;
@@ -46,7 +48,7 @@ export default class FinProfileModel {
   }
   static getWhiteProfile(){
     return new FinProfileModel(
-        "usuario em branco", 0, 0, 0, 0, 0, 0, 0, 0, 
+         "usuario em branco", 0, 0, 0, 0, 0, 0, 0, 0, 
     )
   }
   get name() {

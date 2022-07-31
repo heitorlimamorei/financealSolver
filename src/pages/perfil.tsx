@@ -15,7 +15,7 @@ export default function Perfil() {
           <div className="flex mb-5 mt-5 w-full">
           <ProfileInput 
           tipo="text"
-          valor={`Nome: ${usuario?.nome ?? 'Nome não definido'}`}
+          valor={`Nome: ${finProfile.name}`}
           disabled
           className='dark:text-gray-800 w-1/3'
           />
