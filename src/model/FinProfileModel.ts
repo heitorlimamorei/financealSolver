@@ -1,7 +1,5 @@
-import useAuth from "../data/hook/useAuth";
 import useFinances from "../data/hook/useFinances";
 import GastoItem from "./GastoItem";
-
 interface iptuProps{
   imovel: number;
   valorFinal: number;
@@ -46,9 +44,9 @@ export default class FinProfileModel {
     this.#inss = calcularInss(this.#salarioBruto)
     this.#irpf = calcularIr(this.#salarioBruto, this.#dependentesNumero) 
   }
-  static getWhiteProfile(){
+  static getWhiteProfile(usuario = {nome:''}){
     return new FinProfileModel(
-         "usuario em branco", 0, 0, 0, 0, 0, 0, 0, 0, 
+       usuario?.nome ??  "usuario em branco", 0, 0, 0, 0, 0, 0, 0, 0, 
     )
   }
   get name() {

@@ -10,7 +10,7 @@ export default function CfProfile() {
   const { usuario  } = useAuth()
   const router = useRouter()
   const { newFinProfile, finProfile } = useAppData();
-  const [name, setName] = useState(usuario?.nome ?? 'Usuario sem nome');
+  const [name, setName] = useState(finProfile?.name);
   const [salarioBruto, setSalarioBruto] = useState<number>(finProfile?.salarioBruto > 0 ? finProfile?.salarioBruto : null);
   const [dependentes, setDependentes] = useState<number>(finProfile?.dependentesNumero > 0 ? finProfile?.dependentesNumero : null);
   const [planoDeSaude, setPlanoDeSaude] = useState<number>(finProfile?.planoDeSaudeValor > 0 ? finProfile?.planoDeSaudeValor : null);
@@ -18,10 +18,7 @@ export default function CfProfile() {
   const [valorImovel, setValorImovel] = useState<number>(finProfile?.iptu.imovel > 0 ? finProfile?.iptu.imovel : null);
   const [parcelarIptu, setParcelarIptu] = useState<number>(finProfile?.iptuParcelamento > 1 ? finProfile?.iptuParcelamento : null);
   const [valorCarro, setValorCarro] = useState<number>(finProfile?.ipva.carro > 0 ? finProfile?.ipva.carro : null);
-  const [parcelasIpva, setParcelasIpva] = useState<number>(finProfile?.ipvaParcelamento > 1 ? finProfile?.ipvaParcelamento : null);
-  useEffect(()=>{
-    setName(usuario?.nome ?? 'Usuario sem nome')
-  },[usuario])
+  const [parcelasIpva, setParcelasIpva] = useState<number>(finProfile?.ipvaParcelamento > 1 ? finProfile?.ipvaParcelamento : null)
   function criarPerfilFinanceiro() {
     newFinProfile(
       new FinProfileModel(

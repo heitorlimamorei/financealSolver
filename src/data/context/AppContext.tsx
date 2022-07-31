@@ -21,9 +21,9 @@ const AppContext = createContext<AppContextProps>({
 
 
 export function AppContextProvider(props:AppContextProvider){
-    const [tema, setTema] = useState('')
-    const [finProfile, setFinProfile] = useState(finProfileMock)
     const {usuario} = useAuth()
+    const [tema, setTema] = useState('')
+    const [finProfile, setFinProfile] = useState(FinProfileModel.getWhiteProfile())
     function alternarTema(){
         const novoTema = tema === 'dark' ? '' : 'dark'
         setTema(novoTema)
@@ -38,7 +38,7 @@ export function AppContextProvider(props:AppContextProvider){
     }, [])
 
     useEffect(() =>{
-        newFinProfile(FinProfileModel.getWhiteProfile())
+        newFinProfile(FinProfileModel.getWhiteProfile(usuario))
     }, [usuario])
     
     return (
