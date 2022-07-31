@@ -14,6 +14,7 @@ import Router from "../../../node_modules/next/router";
 import Usuario from "../../model/Usuario";
 import Cookies from "../../../node_modules/js-cookie/index";
 
+
 interface AuthContextProps {
   usuario?: Usuario;
   loginGoogle?: () => Promise<void>;

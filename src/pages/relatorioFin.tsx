@@ -5,9 +5,9 @@ import useAppData from "../data/hook/useAppData";
 export default function ListaGastos() {
   const { finProfile} = useAppData()
   function renderizarListaDeGastos(){
-    return finProfile.getArrayGastos().map(gastos => {
+    return finProfile.getArrayGastos().map((gastos) => {
       return (
-        <GastoItemEl gasto={gastos} />
+        <GastoItemEl gasto={gastos} key={gastos.id}/>
       )
     })
   }

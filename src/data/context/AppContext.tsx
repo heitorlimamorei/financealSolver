@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect} from "react";
 import FinProfileModel from "../../model/FinProfileModel";
-
+import useAuth from "../hook/useAuth";
 interface AppContextProps {
     finProfile: FinProfileModel
     tema: string;
@@ -23,6 +23,7 @@ const AppContext = createContext<AppContextProps>({
 export function AppContextProvider(props:AppContextProvider){
     const [tema, setTema] = useState('')
     const [finProfile, setFinProfile] = useState(finProfileMock)
+    const {usuario} = useAuth()
     function alternarTema(){
         const novoTema = tema === 'dark' ? '' : 'dark'
         setTema(novoTema)
@@ -35,6 +36,11 @@ export function AppContextProvider(props:AppContextProvider){
         const tema = localStorage.getItem('tema')
         setTema(tema)
     }, [])
+
+    useEffect(() =>{
+        newFinProfile(FinProfileModel.getWhiteProfile())
+    }, [usuario])
+    
     return (
         <AppContext.Provider value={{
             finProfile,

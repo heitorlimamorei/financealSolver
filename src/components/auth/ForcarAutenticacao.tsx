@@ -17,7 +17,7 @@ export default function ForcarAutenticacao(props){
             <div className={`
             flex  items-center justify-center h-screen
             `}>
-                <Image src={Loading}/>
+                <Image src={Loading} alt="Loading..."/>
             </div>
         )
     }

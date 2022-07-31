@@ -7,7 +7,6 @@ export default function GastoItemEl(props: GastoItemProps) {
   return (
     <li
       className={`w-full px-4 py-2 bg-white text-gray-700 hover:bg-gray-50 rounded-md m-2`}
-      key={props.gasto.id}
     >
       <div className={`flex items-center justify-center`}>
         <span className='m-2'><strong>{props.gasto.name}</strong></span>
