@@ -1,4 +1,5 @@
 interface InputProps {
+  tempo?: boolean;
   tipo: string;
   valor: any;
   setValor?: (v: any) => void;
@@ -16,10 +17,14 @@ export default function ProfileInput(props: InputProps) {
       onChange={(ev) =>
         props.tipo === "number"
           ? props.setValor(
-              Number(ev.target.value) > 0
-                ? Number(ev.target.value) <= 12
-                  ? Number(ev.target.value)
-                  : 12
+              props.tempo
+                ? Number(ev.target.value) > 0
+                  ? Number(ev.target.value) <= 12
+                    ? Number(ev.target.value)
+                    : 12
+                  : ""
+                : Number(ev.target.value) > 0
+                ? Number(ev.target.value)
                 : ""
             )
           : props.setValor(ev.target.value)

@@ -52,6 +52,7 @@ export default function CfProfile() {
             setValor={setSalarioBruto}
             className="w-full"
             placeholder="Digite seu salário bruto"
+            tempo={false}
           />
           <ProfileInput
             valor={dependentes ?? ''}
@@ -90,6 +91,7 @@ export default function CfProfile() {
               setValor={setParcelarIptu}
               className="w-1/2"
               placeholder="X vezes pra pagar IPTU"
+              tempo
             />
           </div>
           <div className="flex w-full ">
@@ -106,6 +108,7 @@ export default function CfProfile() {
               setValor={setParcelasIpva}
               className="w-1/2"
               placeholder="X vezes pra pagar IPVA"
+              tempo
             />
           </div>
           <button className="w-full m-2 py-2 px-4 text-gray-100 bg-green-500 hover:bg-green-300 rounded-md " onClick={criarPerfilFinanceiro}>
