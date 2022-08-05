@@ -21,8 +21,6 @@ export default function MenuLateral(props){
             </div>
             <ul className={`flex-grow`}>
                 <MenuItem titulo="Home" url="/" icone={IconeCasa} />
-                <MenuItem titulo="Ajustes" url="/ajustes" icone={IconeAjustes} />
-                <MenuItem titulo="Notificações" url="/notificacoes" icone={IconeSino} />
             </ul>
             <ul className={``}>
             <MenuItem titulo="Sair"  icone={IconeSair} onClick={logout} className={`

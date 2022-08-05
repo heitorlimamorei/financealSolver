@@ -13,7 +13,7 @@ export default function Input(props: InputProps) {
   };
   return (
     <div
-      className="flex flex-col h-full justify-center items-center"
+      className="flex flex-col h-full justify-center items-center mt-2"
       onKeyDown={(ev) => {
         if (ev.key === "Enter") {
           renderizarValor();
