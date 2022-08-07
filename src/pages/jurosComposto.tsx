@@ -31,6 +31,9 @@ export default function SimularJurosCompostos() {
         <div>
           <div
             className={` flex items-center justify-center w-full h-full m-2 `}
+            onKeyDown={(event) => {
+              event.key === 'Enter' ? setArrayLista() : false
+            }}
           >
             <ul>
               <JurosInput

@@ -74,36 +74,36 @@ export default function CfProfile() {
             placeholder="Valor do seu plano de saúde dos seus dependentes"
           />
           ) : false}
-          <div className="flex w-full">
+          <div className="flex flex-col md:flex-row w-full">
             <ProfileInput
               valor={valorImovel ?? ''}
               tipo="number"
               setValor={setValorImovel}
-              className="w-1/2"
+              className="w-full  md:w-1/2"
               placeholder="Valor de seu imóvel"
             />
             <ProfileInput
               valor={parcelarIptu ?? ''}
               tipo="number"
               setValor={setParcelarIptu}
-              className="w-1/2"
+              className="w-full  md:w-1/2 md:mr-0"
               placeholder="X vezes pra pagar IPTU"
               tempo
             />
           </div>
-          <div className="flex w-full ">
+          <div className="flex  flex-col md:flex-row  w-full ">
             <ProfileInput
               valor={valorCarro ?? ''}
               tipo="number"
               setValor={setValorCarro}
-              className="w-1/2"
+              className="w-full md:w-1/2"
               placeholder="Valor de seu carro"
             />
             <ProfileInput
               valor={parcelasIpva ?? ''}
               tipo="number"
               setValor={setParcelasIpva}
-              className="w-1/2"
+              className="w-full md:w-1/2  md:mr-0"
               placeholder="X vezes pra pagar IPVA"
               tempo
             />
