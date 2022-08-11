@@ -1,5 +1,5 @@
 import MenuItem from "./MenuItem";
-import {IconeAjustes, IconeCasa, IconeSino, IconeSair} from '../icons/Icones'
+import {IconeAjustes, IconeCasa, IconeSino, IconeSair, FeedBack} from '../icons/Icones'
 import Logo from "./Logo";
 import useAuth from "../../data/hook/useAuth";
 
@@ -21,6 +21,7 @@ export default function MenuLateral(props){
             </div>
             <ul className={`flex-grow`}>
                 <MenuItem titulo="Home" url="/" icone={IconeCasa} />
+                <MenuItem titulo="FeedBack" url="/FeedBack" icone={FeedBack} />
             </ul>
             <ul className={``}>
             <MenuItem titulo="Sair"  icone={IconeSair} onClick={logout} className={`
