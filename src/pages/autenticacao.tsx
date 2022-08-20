@@ -3,7 +3,7 @@ import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
 import { MsgErrorIcon } from "../components/icons/Icones";
 import useAuth from "../data/hook/useAuth";
-
+import Imag from '../../public/images/FinancialSolver.png'
 export default function Autenticacao() {
   const { login, cadastrar, usuario, loginGoogle, error} = useAuth();
   const [modo, setModo] = useState<"login" | "cadastro">("login");
@@ -32,13 +32,10 @@ export default function Autenticacao() {
     justify-center
     `}
     >
-      <div className={`hidden md:block md:w-1/2 lg:w-2/3 `}>
-        <img
-          src="https://source.unsplash.com/random"
-          alt="Imagem de autenticação"
-          className="h-screen w-full object-cover"
-        />
+      <div className="hidden lg:flex h-full">
+        <Image src={Imag}/>
       </div>
+      
       <div className={` w-full md:w-1/2 m-10 lg:w-1/3`}>
         <h1
           className={`

@@ -10,7 +10,7 @@ interface JurosInputProps {
 export default function JurosInput(props: JurosInputProps) {
   return (
     <li>
-      <div className={`flex justify-center items-center bg-white text-sm md:text-md lg:text-lg p-1 md:p-2 rounded-md m-2`}>
+      <div className={`flex flex-col md:flex-row justify-center items-center bg-white text-sm md:text-md lg:text-lg p-1 md:p-2 rounded-md m-2`}>
         <input
           type="number"
           placeholder="Capital"

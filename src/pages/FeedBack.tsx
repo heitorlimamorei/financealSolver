@@ -20,7 +20,8 @@ export default function FeedBack(){
             classificacao: classificacao,
             userName: finProfile.name,
             userImg: usuario.imagemUrl ?? '',
-            verificado: false
+            verificado: false,
+            email: usuario.email
         })
         window.alert('Obrigado por dar sua opinião, comentario enviado!')
         router.push('/CommentsFeed')
