@@ -11,7 +11,7 @@ export default function CommentsFeed() {
     let comentarios = await getDocs(collectionRef);
     let normalizado = [];
     comentarios.forEach((comentario) => {
-      normalizado.push({ id: comentario.id, data: comentario.data() });
+       normalizado.push({ id: comentario.id, data: comentario.data() });
     });
     setComentarios(
       normalizado.map((comentario) => {

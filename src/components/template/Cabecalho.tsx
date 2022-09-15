@@ -14,6 +14,9 @@ export default function Cabecalho(props:CabecalhoProps){
     return (
         <div className={`flex`}>
             <Titulo titulo={props.titulo} subtitulo={props.subtitulo}/>
+            <div className="justify-start">
+                {props?.children}
+            </div>
             <div className={`flex flex-grow justify-end items-center`}>
                 {props?.feedBack ? (
                  <Link href="/CommentsFeed" >                 

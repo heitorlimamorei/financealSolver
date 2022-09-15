@@ -8,6 +8,7 @@ export default function FeedBackButton(props:FeedBackButtonProps){
     onClick={props.onClick} 
     className={`
     bg-green-400 py-2 px-4 w-full rounded-md mt-2  h-15 hover:bg-green-500 
+    ${props.className}
     `}
     >
         {props.text}

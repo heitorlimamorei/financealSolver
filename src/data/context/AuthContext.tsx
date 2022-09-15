@@ -140,7 +140,7 @@ export function AuthProvider(props) {
       setTimeout(()=>{
         setCarregando(false)
         Router.push('/')
-      },10000)
+      },15000)
     }
   },[carregando])
   return (

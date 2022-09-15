@@ -13,7 +13,7 @@ export default function ProfileInput(props: InputProps) {
       className={` ${props.className} py-2 px-4 m-2 rounded-md bg-gray-100 focus:bg-white`}
       type={props.tipo}
       placeholder={props.placeholder}
-      value={props.valor}
+      value={props.valor ?? ''}
       onChange={(ev) =>
         props.tipo === "number"
           ? props.setValor(

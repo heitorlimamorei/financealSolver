@@ -29,7 +29,7 @@ export default function FeedBack(){
     return (
         <div>
             <Layout feedBack titulo="De sua opinião" subtitulo="Deixe seu comentario e vejo os outros">
-                <div className="flex flex-column  w-full h-full  items-center justify-center">
+                <div className="flex flex-col  w-full h-full  items-center justify-center">
                     <div className="flex flex-col  mt-10 h-full items-center justify-center">
                         <ProfileInput 
                         valor={comentario ?? ''}
