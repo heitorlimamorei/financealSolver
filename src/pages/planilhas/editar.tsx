@@ -21,7 +21,7 @@ import PlanButton from "../../components/planilhas/PlanButton";
 import SelecionarTipo from "../../components/planilhas/SelecionarTIpo";
 import { carregarCloud } from "../../components/icons/Icones";
 import PlanCode from "../../components/planilhas/PlanCode";
-import ShowBalance from "../../components/planilhas/showBalance";
+import Balance from '../../components/planilhas/Balance'
 export default function Planilha() {
   const { planilha, newPlanilha, finProfile } = useAppData();
   const [nome, setNome] = useState(null);
@@ -138,7 +138,7 @@ export default function Planilha() {
             <PlanCode 
             code={planilha.id}
             />
-            <ShowBalance valor={planilha.getBalance().toFixed(2)}/>
+            <Balance valor={planilha.getBalance().toFixed(2)}/>
       </div> 
     )
   }
