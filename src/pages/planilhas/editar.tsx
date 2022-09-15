@@ -21,9 +21,7 @@ import PlanButton from "../../components/planilhas/PlanButton";
 import SelecionarTipo from "../../components/planilhas/SelecionarTIpo";
 import { carregarCloud } from "../../components/icons/Icones";
 import PlanCode from "../../components/planilhas/PlanCode";
-import ShowBalance from "../../components/planilhas/showBalance"
-
-
+import ShowBalance from "../../components/planilhas/showBalance";
 export default function Planilha() {
   const { planilha, newPlanilha, finProfile } = useAppData();
   const [nome, setNome] = useState(null);
