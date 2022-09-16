@@ -186,7 +186,7 @@ export default function Planilha() {
             <TableRow className="cursor-pointer hover:bg-gray-200">
               <TableCelule texto="Total"
               />
-              <TableCelule texto={`R$${planilha.somarValores()}`}
+              <TableCelule texto={`R$${planilha.somarValores().toFixed(2)}`}
               />
               <TableCelule texto="Todos"
               />
