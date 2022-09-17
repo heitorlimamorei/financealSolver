@@ -102,7 +102,7 @@ export default class PlanilhaModel {
     return this.#valorTotal - this.somarValores()
   }
   static planilhaEmBraco() {
-    return new PlanilhaModel(null, "", "", "", [], 0, []);
+    return new PlanilhaModel(null, "pessoal", "", "", [], 0, []);
   }
   fromFirebase(planilhaFirebase) {
     return new PlanilhaModel(
