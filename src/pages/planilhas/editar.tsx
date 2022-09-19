@@ -224,7 +224,7 @@ export default function Planilha() {
         </div>
         <div className="flex flex-col items-center lg:hidden">
           <span className="flex w-40 h-40 px-10 py-10 mb-2 rounded-full bg-gray-200 text-2xl text-gray-700 items-center justify-center">
-            R${planilha.getBalance()}
+            R${planilha.getBalance().toFixed(2)}
           </span>
           <CriarGasto
             editando={editando}
