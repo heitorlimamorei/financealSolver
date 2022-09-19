@@ -124,11 +124,7 @@ export function AuthProvider(props) {
   useEffect(() => {
     if (Cookies.get("admin-template-lwolf-auth")) {
       const cancelar = () => {
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            configurarSecao(user);
-          }
-        });
+        onAuthStateChanged(auth, configurarSecao);
       };
       return () => cancelar();
     } else {

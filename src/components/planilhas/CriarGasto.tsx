@@ -13,12 +13,17 @@ interface CriarGastoProps {
   tiposLista: string[];
   criarGasto: () => void;
   atualizarGasto: (id: string) => void;
+  className?: {
+    div: string;
+    select: string;
+    input: string;
+  }
 }
 export default function CriarGasto(props: CriarGastoProps) {
   return (
     <div
       className={`
-        flex  items-center bg-white rounded-md p-2 w-full m-2
+        flex ${props.className?.div}  items-center bg-white rounded-md p-2 w-full m-2
         `}
     >
       <ProfileInput
@@ -26,17 +31,20 @@ export default function CriarGasto(props: CriarGastoProps) {
         setValor={props.setNome}
         tipo={"text"}
         placeholder="Nome do gasto"
+        className={`${props.className?.input}`}
       />
       <ProfileInput
         valor={props.valor}
         setValor={props.setValor}
         tipo={"number"}
         placeholder="Valor do gasto"
+        className={`${props.className?.input}`}
       />
       <SelecionarTipo
         tipo={props.tipo}
         setTipo={props.setTipo}
         tiposLista={props.tiposLista}
+        className={`${props.className?.select}`}
       />
       <FeedBackButton
         onClick={props.editando ? props.atualizarGasto : props.criarGasto}

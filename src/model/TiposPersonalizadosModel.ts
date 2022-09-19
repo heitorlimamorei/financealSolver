@@ -16,6 +16,7 @@ export default class TiposPersonalizadosModel{
             "Compras gerais",
             "Farmácia",
             "Educação",
+            "Transporte",
             "Tributos",
             "Impostos",
             "Gastos Urgentes",

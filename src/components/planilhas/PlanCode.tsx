@@ -2,6 +2,7 @@ import { copyToClipBoard } from "../icons/Icones";
 
 interface PlanCodeProps {
   code: string;
+  className?: string
 }
 export default function PlanCode(props: PlanCodeProps) {
   function copyRoomCodeToClipBoard() {
@@ -15,6 +16,7 @@ export default function PlanCode(props: PlanCodeProps) {
       flex items-center bg-white rounded-md cursor-pointer
        hover:bg-gray-100 py-2 px-2  border-2 border-gray-700
        font-bold mr-5
+       ${props?.className}
     `}
       onClick={copyRoomCodeToClipBoard}
     >

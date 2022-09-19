@@ -71,40 +71,40 @@ export default function Planilhas() {
   return (
     <div>
       <Layout titulo="Crie uma planilha de gastos" subtitulo="">
-        <div className="flex w-full h-full items-center pt-3">
+        <div className="flex flex-col md:flex-row  w-full h-full items-center pt-3">
           <ProfileInput
             valor={planilhaCodigo}
             setValor={setPlanilhaCodigo}
             tipo="string"
             placeholder="Digite o código da planilha"
-            className="w-2/3"
+            className="w-full md:w-2/3"
           />
           <button
             onClick={pesquisarPlanilha}
-            className={`px-4 py-2 w-1/3 bg-green-500 text-white hover:bg-green-400 rounded-xl flex items-center justify-center`}
+            className={`px-4 py-2 w-full md:w-1/3 bg-green-500 text-white hover:bg-green-400 rounded-xl flex items-center justify-center`}
           >
             Pesquisar 
           </button>
         </div>
-        <div className="flex w-full h-full items-center">
+        <div className="flex flex-col md:flex-row w-full h-full items-center">
           <ProfileInput
             valor={planilhaNome}
             setValor={setPlanilhaNome}
             tipo="string"
             placeholder="Digite o nome da planilha"
-            className="w-1/2"
+            className="w-full md:w-1/2"
           />
           <select
             value={planilhaTipo ?? ""}
             onChange={(ev) => setPlanilhaTipo(ev.target.value)}
-            className="py-2 px-4 m-2 rounded-md bg-gray-100 focus:bg-white"
+            className="w-full md:w-1/4 py-2 px-4 m-2 rounded-md bg-gray-100 focus:bg-white"
           >
             <option value={"pessoal"}>Pessoal</option>
             <option value={"empresarial"}>Empresarial</option>
           </select>
           <button
             onClick={criarPlanilha}
-            className={`px-4 py-2 w-1/2 bg-green-500 text-white hover:bg-green-400 rounded-xl `}
+            className={`px-4 py-2 w-full md:w-1/4 bg-green-500 text-white hover:bg-green-400 rounded-xl `}
           >
             Criar planilha
           </button>
