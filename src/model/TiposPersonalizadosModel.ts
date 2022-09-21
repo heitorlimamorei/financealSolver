@@ -25,6 +25,11 @@ export default class TiposPersonalizadosModel{
             return new TipoPersonalizadosModel(tipo, i)
         }))
     }
+    static carregarArrayExistente(array: string[]){
+        return new TiposPersonalizadosModel(array.map((tipo, i)=>{
+            return new TipoPersonalizadosModel(tipo, i)
+        }))
+    }
     get arrayDeTipos(){
         return this.#arrayDeTipos
     }

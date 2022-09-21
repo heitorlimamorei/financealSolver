@@ -19,11 +19,13 @@ import TableRow from "../../components/planilhas/TableRow";
 import TableCelule from "../../components/planilhas/TableCelule";
 import PlanButton from "../../components/planilhas/PlanButton";
 import SelecionarTipo from "../../components/planilhas/SelecionarTIpo";
-import { carregarCloud} from "../../components/icons/Icones";
+import { carregarCloud, configIcon} from "../../components/icons/Icones";
 import PlanCode from "../../components/planilhas/PlanCode";
 import Balance from "../../components/planilhas/Balance";
+import NotFound from '../../components/planilhas/NotFound'
 import GastoMobile from "../../components/planilhas/mobile/Gasto";
 import PlanCodeMobile from "../../components/planilhas/mobile/PlacodeMobile";
+import Link from "next/link";
 export default function Planilha() {
   const { planilha, newPlanilha, finProfile } = useAppData();
   const [nome, setNome] = useState(null);
@@ -155,18 +157,29 @@ export default function Planilha() {
     }
   }
   const placodeRender = () => {
-    return (
+    return planilha.id ? (
       <div className="flex justify-start w-full">
         <PlanCode code={planilha.id} className={`hidden md:flex`}/>
         <Balance valor={planilha.getBalance().toFixed(2)} className={`hidden lg:flex`}/>
         <PlanCodeMobile code={planilha.id} className={`md:hidden`}/>
+        
+        <button className="ml-1 hover:text-gray-600 dark:text-gray-100">
+        <Link href="ajustes">
+        {configIcon(8)}
+        </Link>
+        </button>
       </div>
-    );
+    ) : (
+      <></>
+    )
   };
   return (
     <div className={``}>
       <Layout titulo="" subtitulo="" addChild={placodeRender()}>
-        <div
+        {
+          planilha.id ? (
+            <>
+            <div
           className={`
         hidden
         mt-1
@@ -253,7 +266,25 @@ export default function Planilha() {
               className={{editar: "md:hidden", deletar: "hidden"}}
             />
         </div>
+        </>
+          ): (
+            <>
+            <NotFound
+            msg="É necessario carregar uma planilha para acessar essa tela!"
+            statusErro="401"
+            routes={{
+              routeOne: "/planilhas",
+              routeTwo: "/planilhas/criar"
+            }}
+            routeMsg={{
+              msgOne:"Pesquise ou",
+              msgTwo:"Crie uma"
+            }}
+            />
+            </>
+          )
+        }
       </Layout>
     </div>
-  );
+  )
 }
